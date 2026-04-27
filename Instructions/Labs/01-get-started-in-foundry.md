@@ -94,8 +94,8 @@ So far, the model has answered questions based on the data with which it was tra
 We can use *tools* to give models access to external data sources, and to perform custom tasks. Let's add a tool that enables the model to search the Web for up-to-date information.
 
 1. In the pane on the left, under the instructions, expand the **Tools** section if it is not already expanded.
-1. In the **Add** drop-down list, select **Web search**. Then read the information about the tool and add it.
-1. In the chat pane, enter the prompt `Find a vintage computer store near Seattle` (*or your local city!*) and review the response.
+1. In the **Add** drop-down list, select **Web search**. Then read the information about the tool.
+1. After adding the *web_search* tool, in the chat pane, enter the prompt `Find a vintage computer store near Seattle` (*or your local city!*) and review the response.
 
     The model should have searched the Web for vintage computer stores near the specific city.
 

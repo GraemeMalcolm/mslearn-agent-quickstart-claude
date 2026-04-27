@@ -22,7 +22,10 @@ The Foundry Toolkit extension for Visual Studio Code brings the assets in your F
 1. Start Visual Studio Code
 1. In the navigation bar on the left, view the **Extensions** page.
 1. Search the extensions marketplace for `Foundry Toolkit`, and install the **Foundry Toolkit for VS Code** extension.
-1. After installing the extension, select the **AI Toolkit** page in the left navigation bar.
+
+    The extension may take a minute or so to install.
+
+1. After installing the extension, select the **AI Toolkit** page in the left navigation bar; and wait for it to load.
 
     ![Screenshot of the Foundry Toolkit Visual Studio Code extension.](./media/foundry-vs-extension.png)
 
@@ -31,6 +34,8 @@ The Foundry Toolkit extension for Visual Studio Code brings the assets in your F
 ## Connect to your agent
 
 Now that you have a connection to your Foundry project, you can access the assets you've created in it - including the *computing-history* agent you created in the previous exercise.
+
+    > **Tip**: If you didn't complete the previous exercise, or have deleted your *computing-history* agent, use the **+** icon for the **Prompt agents** node to create a new agent named `computing-history` based on the *gpt-4.1-mini* model with the instructions `You are an expert in the history of computing and AI.` and add the *Web search* tool.
 
 1. In the Foundry Toolkit pane, under your project, expand **Prompt agents**, expand select the **computing-history** agent you created previously, and select the version 1 implementation of the agent (or the latest version if you saved additional changes in the Foundry portal).
 
@@ -48,7 +53,7 @@ While you can use the graphical interface in the Foundry Portal and the Foundry 
 
 1. View the **Extensions** pane; and if it is not already installed, install the **Python** extension.
 1. In the **Command Palette (Ctrl+Shift+P)**, use the command `python:create environment` (or `python:select interpreter`) to create a new **Venv** environment based on your Python 3.1x installation.
-1. Select the **Explorer** pane, and confirm that a new folder named **.venv** has been created - this contains the runtime files for the Python environment you'll use for your application.
+1. Select the **Explorer** pane, and confirm that a new folder named **.venv** has been created in the **computing-history** root folder - this contains the runtime files for the Python environment you'll use for your application.
 1. In the **Explorer** pane, in the **computing-history** folder, add a new file named `agent.py`. This is the code file in which you'll write your Python code.
 1. Switch back to the **AI Toolkit** pane. Then right-click the latest version of the agent and select **View code**. Then when prompted, select the following options:
     - **SDK**: Microsoft Foundry Projects client library
@@ -92,15 +97,18 @@ While you can use the graphical interface in the Foundry Portal and the Foundry 
     > **Note**: Opening the terminal in Visual Studio Code will automatically activate the Python environment. If you're using a PowerShell terminal by default, you may need to enable running scripts on your system. See [Set-ExecutionPolicy](https://learn.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy) for details.
 
 1. Ensure that the terminal is open in the **computing-history** folder with the prefix **(.venv)** to indicate that the Python environment you created is active.
+
+    > **Tip**: You can enter the command `cls` to clear the console pane - which may make it easier to focus on the outputs from commands as you run them.
+
 1. Install the Azure AI projects and OpenAI SDKs by running the following command:
 
-    ```
+    ```bash
     pip install azure-ai-projects>=2.0.0 openai
     ```
 
-1. After the libraries are installed, use the following command to sign into Azure.
+1. After the libraries are installed (which may take a minute or so), use the following command to sign into Azure.
 
-    ```powershell
+    ```bash
     az login
     ```
 
@@ -109,7 +117,7 @@ While you can use the graphical interface in the Foundry Portal and the Foundry 
 1. When prompted, follow the instructions to sign into Azure. Then complete the sign in process in the command line, viewing (and confirming if necessary) the details of the subscription containing your Foundry resource.
 1. After you have signed in, enter the following command to run the application:
 
-    ```powershell
+    ```bash
    python agent.py
     ```
 
@@ -131,7 +139,7 @@ GitHub Copilot provides agentic AI assistance in Visual Studio Code, helping you
 
     The **Chat** pane is where you configure and use GitHub Copilot and connected agents to assist you with development tasks. You can select the model that GitHub Copilot uses, configure tools, and add custom agents. We'll use the default settings in this exercise.
 
-1. In the **Chat** pane, enter the following prompt:
+1. Ensure the **agent.py** code file is open in the editor, then in the **Chat** pane, enter the following prompt:
 
     ```
     Modify the code to iteratively ask the user to enter a prompt for the agent and display the results, running until the user enters "quit". 
@@ -161,6 +169,12 @@ In this exercise, you used the Foundry Toolkit extension in Visual Studio Code a
 
 ## Next steps
 
-This is the second in a series of lab exercises; save your work and continue to the next exercise if you're ready.
+Check out the following training resources to dive deeper into AI app and agent development on Azure:
+
+- [Develop Generative AI apps in Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-83c73f92b07ec44b678fe87608ac5812111e0caacf7308b47afccec1f274ccc4)
+- [Develop AI agents on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-e479cf28c8a127f98d3d45961214485266d85b486991cebf33fe779fb53a0190)
+- [Develop natural language solutions on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-37cace5b5d91825002d4c09e3f3f98d9027e1b2a79b490b663684c4703361ca7)
+- [Extract visual insights from data on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-d0b0e550fda9d8fc957788736aaee66351967ea44dbad310f4f8dae94a21cfa2)
+- [Develop AI Information Extraction solutions on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-796e69a13e07dffb16c3a979eb65711e5884ecee17cf595f4eb9b604e919a428)
 
 > **Tip**: If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this exercise to avoid unnecessary utilization charges.
