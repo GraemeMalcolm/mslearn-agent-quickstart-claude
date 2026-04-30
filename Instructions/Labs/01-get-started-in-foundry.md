@@ -160,6 +160,6 @@ In this exercise, you explored how to deploy and chat with a generative AI model
 
 ## Next steps
 
-This is the first in a series of lab exercises; save your work and continue to the next exercise if you're ready.
+This is the first in a series of lab exercises; save your work and continue to the **[next exercise](./02-continue-in-vscode.md)** if you're ready.
 
 > **Tip**: If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this exercise to avoid unnecessary utilization charges.

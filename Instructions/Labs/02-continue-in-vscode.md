@@ -9,7 +9,7 @@ lab:
 
 # Continue developing your agent in Visual Studio Code
 
-In the previous exercise, used Microsoft Foundry to start developing an AI agent that provides information and expertise on the history of computing.
+In the **[previous exercise](./01-get-started-in-foundry.md)**, you used Microsoft Foundry to start developing an AI agent that provides information and expertise on the history of computing.
 
 Now you're ready to continue developing your agent using the Foundry integration features of Visual Studio Code.
 

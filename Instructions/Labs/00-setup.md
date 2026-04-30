@@ -21,3 +21,5 @@ Before you start, you will need:
 - [Python version **3.13.xx**](https://www.python.org/downloads/release/python-31312/) or later installed.
 - [Git](https://git-scm.com/install/) installed.
 - [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installed.
+
+When you have everything ready to go, move on to the **[first exercise](./01-get-started-in-foundry.md)**.
