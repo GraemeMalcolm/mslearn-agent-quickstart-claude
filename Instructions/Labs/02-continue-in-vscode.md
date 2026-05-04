@@ -37,7 +37,7 @@ The Foundry Toolkit extension for Visual Studio Code brings the assets in your F
 
 Now that you have a connection to your Foundry project, you can access the assets you've created in it - including the *computing-history* agent you created in the previous exercise.
 
-    > **Tip**: If you didn't complete the previous exercise, or have deleted your *computing-history* agent, use the **+** icon for the **Prompt agents** node to create a new agent named `computing-history` based on the *gpt-4.1-mini* model with the instructions `You are an expert in the history of computing and AI.` and add the *Web search* tool.
+> **Tip**: If you didn't complete the previous exercise, or have deleted your *computing-history* agent, use the **+** icon for the **Prompt agents** node to create a new agent named `computing-history` based on the *gpt-4.1-mini* model with the instructions `You are an expert in the history of computing and AI.` and add the *Web search* tool.
 
 1. In the Foundry Toolkit pane, under your project, expand **Prompt agents**, expand select the **computing-history** agent you created previously, and select the version 1 implementation of the agent (or the latest version if you saved additional changes in the Foundry portal).
 
