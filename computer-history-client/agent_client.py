@@ -26,7 +26,7 @@ class AgentClient:
     
     def __init__(self):
         """Initialize the agent client with authentication and endpoint."""
-        self.agent_endpoint = os.getenv("AGENT_ENDPOINT")
+        self.agent_endpoint = os.getenv("AGENT_ENDPOINT").replace("/v1/responses", "")
         if not self.agent_endpoint:
             raise ValueError("AGENT_ENDPOINT not found in environment variables")
         

@@ -72,6 +72,8 @@ function sendMessage() {
 
             if (data.error) {
                 addMessage(`Error: ${data.error}`, 'agent');
+            } else if (data.response_html) {
+                addMessage(data.response_html, 'agent', { isHtml: true });
             } else {
                 addMessage(data.response, 'agent');
             }
@@ -88,7 +90,7 @@ function sendMessage() {
         });
 }
 
-function addMessage(text, sender) {
+function addMessage(text, sender, options = {}) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${sender}`;
     messageDiv.setAttribute('role', 'article');
@@ -102,10 +104,13 @@ function addMessage(text, sender) {
     const content = document.createElement('div');
     content.className = 'message-content';
 
-    // Security: Escape HTML and format URLs as safe clickable links
-    // This prevents XSS attacks from both user input and agent responses
-    const formattedText = formatUrlsAsLinks(text);
-    content.innerHTML = formattedText;
+    if (options.isHtml === true) {
+        content.innerHTML = text;
+    } else {
+        // Security: Escape HTML first, then safely render structured response content.
+        const formattedText = renderMessageContent(text);
+        content.innerHTML = formattedText;
+    }
 
     messageDiv.appendChild(avatar);
     messageDiv.appendChild(content);
@@ -117,28 +122,127 @@ function addMessage(text, sender) {
     setTimeout(scrollToBottom, 100);
 }
 
-function formatUrlsAsLinks(text) {
-    // Regex to match safe HTTP/HTTPS URLs only
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
+function renderMessageContent(text) {
+    const normalizedText = String(text || '').replace(/\r\n/g, '\n');
+    const markedLib = resolveMarkedLibrary();
+    const purifyLib = resolvePurifyLibrary();
 
-    // Escape all HTML special characters to prevent XSS attacks
-    // This is applied to BOTH user messages and agent responses
-    const escapedText = text.replace(/&/g, '&amp;')
+    // Fallback rendering if markdown libraries fail to load.
+    if (!markedLib || !purifyLib) {
+        return renderFallbackMarkdown(normalizedText);
+    }
+
+    const renderer = new markedLib.Renderer();
+    renderer.link = (hrefOrToken, title, textValue) => {
+        let href = hrefOrToken;
+        let linkTitle = title;
+        let textContent = textValue;
+
+        // Marked v12+ uses an object argument; older versions pass (href, title, text).
+        if (hrefOrToken && typeof hrefOrToken === 'object') {
+            href = hrefOrToken.href;
+            linkTitle = hrefOrToken.title;
+            textContent = markedLib.Parser && hrefOrToken.tokens
+                ? markedLib.Parser.parseInline(hrefOrToken.tokens)
+                : hrefOrToken.text;
+        }
+
+        const safeHref = href || '#';
+        const safeTitle = linkTitle ? ` title="${escapeHtml(linkTitle)}"` : '';
+        return `<a href="${safeHref}"${safeTitle} target="_blank" rel="noopener noreferrer">${textContent}</a>`;
+    };
+
+    markedLib.setOptions({
+        gfm: true,
+        breaks: true,
+        renderer
+    });
+
+    const rawHtml = markedLib.parse(normalizedText);
+    return purifyLib.sanitize(rawHtml, {
+        USE_PROFILES: { html: true },
+        ALLOWED_ATTR: ['href', 'title', 'target', 'rel', 'class']
+    });
+}
+
+function resolveMarkedLibrary() {
+    if (typeof marked === 'undefined' && typeof window === 'undefined') {
+        return null;
+    }
+
+    const candidate = typeof marked !== 'undefined' ? marked : window.marked;
+    if (!candidate) {
+        return null;
+    }
+
+    if (typeof candidate.parse === 'function') {
+        return candidate;
+    }
+
+    if (typeof candidate.marked === 'function') {
+        return {
+            parse: candidate.marked,
+            setOptions: candidate.setOptions ? candidate.setOptions.bind(candidate) : () => { },
+            Renderer: candidate.Renderer,
+            Parser: candidate.Parser
+        };
+    }
+
+    if (typeof candidate === 'function') {
+        return {
+            parse: candidate,
+            setOptions: candidate.setOptions ? candidate.setOptions.bind(candidate) : () => { },
+            Renderer: candidate.Renderer,
+            Parser: candidate.Parser
+        };
+    }
+
+    return null;
+}
+
+function resolvePurifyLibrary() {
+    if (typeof DOMPurify !== 'undefined') {
+        return DOMPurify;
+    }
+
+    if (typeof window !== 'undefined') {
+        if (window.DOMPurify) {
+            return window.DOMPurify;
+        }
+        if (window.dompurify && typeof window.dompurify.sanitize === 'function') {
+            return window.dompurify;
+        }
+    }
+
+    return null;
+}
+
+function renderFallbackMarkdown(text) {
+    let html = escapeHtml(text);
+
+    // Fenced code blocks.
+    html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (_, _language, code) => {
+        return `<pre><code>${code.trimEnd()}</code></pre>`;
+    });
+
+    // Inline code, strong, emphasis.
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+    // Links.
+    html = html.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+    // Basic line breaks.
+    return html.replace(/\n/g, '<br>');
+}
+
+function escapeHtml(text) {
+    return text.replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
-
-    // Replace safe URLs with clickable links
-    // Note: Only http:// and https:// URLs are matched, preventing javascript:, data:, and vbscript: URIs
-    return escapedText.replace(urlRegex, (url) => {
-        // Additional safety: ensure URL doesn't start with javascript:, data:, or vbscript:
-        const lowerUrl = url.toLowerCase();
-        if (lowerUrl.startsWith('javascript:') || lowerUrl.startsWith('data:') || lowerUrl.startsWith('vbscript:')) {
-            return url; // Return escaped text without making it a link
-        }
-        return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
-    });
 }
 
 function addTypingIndicator() {
