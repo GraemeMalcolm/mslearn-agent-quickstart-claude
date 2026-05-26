@@ -9,7 +9,7 @@ lab:
 
 # Use your agent in a client application
 
-In the previous labs, you created and refined a computing history agent in Microsoft Foundry and Visual Studio Code. In this final lab, you move from development into consumption by using the published agent in a simple client app.
+In the **[previous exercise](./02-continue-in-vscode.md)**, you created and refined a computing history agent in Microsoft Foundry and Visual Studio Code. In this final lab, you move from development into consumption by using the agent in a client app.
 
 Your agent is automatically published with a dedicated endpoint that applications can call by using the OpenAI Responses API. That means you can move beyond playground testing and start integrating the agent into a real user experience.
 
