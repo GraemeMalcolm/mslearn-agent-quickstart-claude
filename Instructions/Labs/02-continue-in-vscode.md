@@ -25,7 +25,7 @@ The Foundry Toolkit extension for Visual Studio Code brings the assets in your F
 
     The extension may take a minute or so to install.
 
-1. After installing the extension, select the **AI Toolkit** page in the left navigation bar; and wait for it to load.
+1. After installing the extension, select the **Foundry Toolkit** page in the left navigation bar; and wait for it to load.
 
     ![Screenshot of the Foundry Toolkit Visual Studio Code extension.](./media/foundry-vs-extension.png)
 
@@ -57,7 +57,7 @@ While you can use the graphical interface in the Foundry Portal and the Foundry 
 1. In the **Command Palette (Ctrl+Shift+P)**, use the command `python:create environment` (or `python:select interpreter`) to create a new **Venv** environment based on your Python 3.1x installation.
 1. Select the **Explorer** pane, and confirm that a new folder named **.venv** has been created in the **computing-history** root folder - this contains the runtime files for the Python environment you'll use for your application.
 1. In the **Explorer** pane, in the **computing-history** folder, add a new file named `agent.py`. This is the code file in which you'll write your Python code.
-1. Switch back to the **AI Toolkit** pane. Then right-click the latest version of the agent and select **View code**. Then when prompted, select the following options:
+1. Switch back to the **Foundry Toolkit** pane. Then right-click the latest version of the agent and select **View code**. Then when prompted, select the following options:
     - **SDK**: Microsoft Foundry Projects client library
     - **Language**: Python
     - **Authentication**: Entra ID
@@ -174,4 +174,3 @@ In this exercise, you used the Foundry Toolkit extension in Visual Studio Code a
 This is the second in a series of lab exercises; save your work and continue to the **[next exercise](./03-use-agent.md)** if you're ready.
 
 > **Tip**: If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this exercise to avoid unnecessary utilization charges.
-
