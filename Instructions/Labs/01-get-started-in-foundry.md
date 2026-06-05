@@ -148,7 +148,7 @@ While you can implement generative AI apps using a standalone model, to create a
 
 Now you have a working agent, you can preview it in a basic web chat application.
 
-1. At the top of the chat pane, in the **Preview** drop-down list, select **Preview agent**.
+1. At the top of the chat pane, in the **Publish** drop-down list, select **Preview web app**.
 
     A preview chat interface is opened in a new browser tab.
 
