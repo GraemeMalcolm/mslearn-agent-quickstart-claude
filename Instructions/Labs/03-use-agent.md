@@ -143,6 +143,8 @@ Now you're ready to test the app with your agent.
 
 In this exercise, you built a client application that uses an agent you developed in Microsoft Foundry.
 
+> **Tip**: If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this lab to avoid unnecessary utilization charges.
+
 ## Next steps
 
 This is the third and final exercise in a series of lab exercises. Check out the following training resources to dive deeper into AI app and agent development on Azure:
@@ -153,9 +155,5 @@ This is the third and final exercise in a series of lab exercises. Check out the
 - [Extract visual insights from data on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-d0b0e550fda9d8fc957788736aaee66351967ea44dbad310f4f8dae94a21cfa2){:target="_blank"}
 - [Develop AI Information Extraction solutions on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-796e69a13e07dffb16c3a979eb65711e5884ecee17cf595f4eb9b604e919a428){:target="_blank"}
 
-> **[Ask Anton](https://aka.ms/azk-anton){:target="_blank"}**<br/>![Anton avatar.](./media/anton-icon.png)<br/>If you have questions about some of the topics covered in this lab, *[Ask Anton](https://aka.ms/choose-anton){:target="_blank"}* is a generative AI-based agent that you can ask about AI concepts and Microsoft Foundry. Choose the Azure-based or Browser-based version of the app at **[https://aka.ms/choose-anton](https://aka.ms/choose-anton){:target="_blank"}**. In the Azure-based version, use the **Configure** button to connect the agent to a deployed model in your Foundry project. The browser-based version runs a small language model in your browser, and may run slowly on older or low-spec computers.<br/><br/>*Ask Anton is not a supported Microsoft product or a component of Microsoft Learn or AI Skills Navigator. Just an experimental example of an AI agent for you to explore as you learn about what's possible with AI.*<br/><br/>If you *do* check out Ask Anton, we'd love you to *[tell us about your experience](https://forms.office.com/r/fC0ndfBQeK){:target="_blank"}*!
+> **[Ask Anton](https://aka.ms/azk-anton){:target="_blank"}**<br/>![Anton avatar.](./media/anton-icon.png)<br/>Don't forget, you can *[Ask Anton](https://aka.ms/choose-anton){:target="_blank"}* if you have any further questions about AI and Microsoft Foundry.<br/><br/>*Ask Anton is not a supported Microsoft product or a component of Microsoft Learn or AI Skills Navigator. Just an experimental example of an AI agent for you to explore as you learn about what's possible with AI.*<br/><br/>If you *do* check out Ask Anton, we'd love you to *[tell us about your experience](https://forms.office.com/r/fC0ndfBQeK){:target="_blank"}*!
 
-
-### Clean-up
-
-If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this lab to avoid unnecessary utilization charges.
