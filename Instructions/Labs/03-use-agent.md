@@ -93,7 +93,7 @@ Now you're ready to implement the code that will submit prompts to your agent.
             "https://ai.azure.com/.default"
         ),
         base_url=self.agent_endpoint,
-        default_query={"api-version": "2025-11-15-preview"}
+        default_query={"api-version": "v1"}
    )
     ```
 
