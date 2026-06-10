@@ -169,6 +169,8 @@ GitHub Copilot provides agentic AI assistance in Visual Studio Code, helping you
 
 In this exercise, you used the Foundry Toolkit extension in Visual Studio Code and the Azure AI Projects SDK to develop an agentic solution. You also used GitHub Copilot to get agentic AI assistance when developing your solution.
 
+> **[Ask Anton](https://aka.ms/azk-anton){:target="_blank"}**<br/>![Anton avatar.](./media/anton-icon.png)<br/>If you have questions about some of the topics covered in this exercise, *[Ask Anton](https://aka.ms/choose-anton){:target="_blank"}* is a generative AI-based agent that you can ask about AI concepts and Microsoft Foundry. Choose the Azure-based or Browser-based version of the app at **[https://aka.ms/choose-anton](https://aka.ms/choose-anton){:target="_blank"}**.<br/><br/>*Ask Anton is not a supported Microsoft product or a component of Microsoft Learn or AI Skills Navigator. Just an experimental example of an AI agent for you to explore as you learn about what's possible with AI.*<br/><br/>If you *do* check out Ask Anton, we'd love you to *[tell us about your experience](https://forms.office.com/r/fC0ndfBQeK){:target="_blank"}*!
+
 ## Next steps
 
 This is the second in a series of lab exercises; save your work and continue to the **[next exercise](./03-use-agent.md)** if you're ready.
