@@ -65,32 +65,32 @@ While you can use the graphical interface in the Foundry Portal and the Foundry 
     A sample code file to connect to your agent and submit a prompt is opened. The code should look similar to this:
 
     ```python
-    # Before running the sample
-    # pip install azure-ai-projects>=2.0.0
+   # Before running the sample
+   # pip install azure-ai-projects>=2.0.0
     
-    from azure.identity import DefaultAzureCredential
-    from azure.ai.projects import AIProjectClient
+   from azure.identity import DefaultAzureCredential
+   from azure.ai.projects import AIProjectClient
     
-    my_endpoint = "https://{your_foundry_resource}.services.ai.azure.com/api/projects/{your_project}"
+   my_endpoint = "https://{your_foundry_resource}.services.ai.azure.com/api/projects/{your_project}"
     
-    project_client = AIProjectClient(
+   project_client = AIProjectClient(
         endpoint=my_endpoint,
         credential=DefaultAzureCredential(),
-    )
+   )
     
-    my_agent = "computing-historian"
-    my_version = "1"
+   my_agent = "computing-historian"
+   my_version = "1"
     
-    openai_client = project_client.get_openai_client()
+   openai_client = project_client.get_openai_client()
     
-    # Reference the agent to get a response
+   # Reference the agent to get a response
     
-    response = openai_client.responses.create(
+   response = openai_client.responses.create(
         input=[{"role": "user", "content": "Tell me what you can help with."}],
         extra_body={"agent_reference": {"name": my_agent, "version": my_version, "type": "agent_reference"}},
-    )
+   )
     
-    print(f"Response output: {response.output_text}")
+   print(f"Response output: {response.output_text}")
     ```
 
 1. Copy and paste the code into your **agent.py** code file. Then close the sample code tab.
@@ -105,13 +105,13 @@ While you can use the graphical interface in the Foundry Portal and the Foundry 
 1. Install the Azure AI projects and OpenAI SDKs by running the following command:
 
     ```bash
-    pip install azure-ai-projects>=2.0.0 openai
+   pip install azure-ai-projects>=2.0.0 openai
     ```
 
 1. After the libraries are installed (which may take a minute or so), use the following command to sign into Azure.
 
     ```bash
-    az login
+   az login
     ```
 
     > **Note**: In most scenarios, just using *az login* will be sufficient. However, if you have subscriptions in multiple tenants, you may need to specify the tenant by using the *--tenant* parameter. See [Sign into Azure interactively using the Azure CLI](https://learn.microsoft.com/cli/azure/authenticate-azure-cli-interactively) for details.

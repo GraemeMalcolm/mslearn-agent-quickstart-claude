@@ -57,7 +57,7 @@ A partially completed client application for your agent has been provided. You'l
 1. Install the required Python packages by running the following command:
 
     ```
-    pip install -r requirements.txt
+   pip install -r requirements.txt
     ```
 
 1. In the **Explorer** pane, in the **/computer-history-client** folder, select the **.env** file to open it. Then update the configuration values to replace *your_agent_endpoint_url* with the **Responses API endpoint** for your published agent.
@@ -117,7 +117,7 @@ Now you're ready to test the app with your agent.
 1. In the terminal, use the following command to sign into Azure.
 
     ```powershell
-    az login
+   az login
     ```
 
     > **Note**: In most scenarios, just using *az login* will be sufficient. However, if you have subscriptions in multiple tenants, you may need to specify the tenant by using the *--tenant* parameter. See [Sign into Azure interactively using the Azure CLI](https://learn.microsoft.com/cli/azure/authenticate-azure-cli-interactively) for details.
