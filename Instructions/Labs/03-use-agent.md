@@ -62,7 +62,7 @@ A partially completed client application for your agent has been provided. You'l
 
 1. In the **Explorer** pane, in the **/computer-history-client** folder, select the **.env** file to open it. Then update the configuration values to replace *your_agent_endpoint_url* with the **Responses API endpoint** for your published agent.
 
-    > **Note**: If the endpoint ends with "/v1/responses", remove "/v1" from the URL. The application code will later remove "/responses" to use the base URL for the responses API for your agent.
+    > **Note**: The endpoint should end with "/openai/responses". If your endpoint ends with "**/v1**/responses", remove "/v1" from the URL. The application code will later remove "/responses" to use the base URL for the responses API for your agent.
 
 1. Save the updated **.env** file.
 
