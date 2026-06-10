@@ -173,4 +173,4 @@ In this exercise, you used the Foundry Toolkit extension in Visual Studio Code a
 
 This is the second in a series of lab exercises; save your work and continue to the **[next exercise](./03-use-agent.md)** if you're ready.
 
-> **Tip**: If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this exercise to avoid unnecessary utilization charges.
+> **Tip**: If you do not plan to complete the next exercise, you should delete the Azure resources created in this exercise to avoid unnecessary utilization charges.

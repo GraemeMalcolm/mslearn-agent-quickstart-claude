@@ -143,8 +143,6 @@ Now you're ready to test the app with your agent.
 
 In this exercise, you built a client application that uses an agent you developed in Microsoft Foundry.
 
-> **Tip**: If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this lab to avoid unnecessary utilization charges.
-
 ## Next steps
 
 This is the third and final exercise in a series of lab exercises. Check out the following training resources to dive deeper into AI app and agent development on Azure:
@@ -157,3 +155,4 @@ This is the third and final exercise in a series of lab exercises. Check out the
 
 > **[Ask Anton](https://aka.ms/azk-anton){:target="_blank"}**<br/>![Anton avatar.](./media/anton-icon.png)<br/>Don't forget, you can *[Ask Anton](https://aka.ms/choose-anton){:target="_blank"}* if you have any further questions about AI and Microsoft Foundry.<br/><br/>*Ask Anton is not a supported Microsoft product or a component of Microsoft Learn or AI Skills Navigator. Just an experimental example of an AI agent for you to explore as you learn about what's possible with AI.*<br/><br/>If you *do* check out Ask Anton, we'd love you to *[tell us about your experience](https://forms.office.com/r/fC0ndfBQeK){:target="_blank"}*!
 
+If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this lab to avoid unnecessary utilization charges.
