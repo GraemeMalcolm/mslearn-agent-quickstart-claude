@@ -3,7 +3,7 @@ lab:
   title: Fallback alternative lab - Explore agent concepts
   description: No cloud subscription? Explore key agent development concepts in your browser.
   level: 100
-  duration: 20 minutes
+  duration: 30 minutes
   islab: true
 ---
 
