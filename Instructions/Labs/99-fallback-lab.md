@@ -174,13 +174,13 @@ Now that you've explored the fundamental building blocks of how agent's are buil
 
 1. Navigate away from the Model Coder app to the **[Computing History agent](https://aka.ms/computing-history-browser){:target="_blank"}** at `https://aka.ms/computing-history-browser`.
 
-    *The first time you download a model, it may take several minutes. Subsequent downloads will be faster.*
+    _The first time you download a model, it may take several minutes. Subsequent downloads will be faster._
 
-    *By default, the browser-based app uses the Microsoft Phi 3.5-mini model running in WebLLM (via WebGPU). When a GPU is unavailable, the app uses a fallback mode with the Phi 3.1-mini model running in the wllama CPU-based engine. If *that* fails, then a *Basic* mode with no large language model is used.*
+    _By default, the browser-based app uses the Microsoft Phi 3.5-mini model running in WebLLM (via WebGPU). When a GPU is unavailable, the app uses a fallback mode with the Phi 3.1-mini model running in the wllama CPU-based engine. If *that* fails, then a *Basic* mode with no large language model is used._
 
     > **Tip**: If the model is taking a long time to load, you can cancel and start in Basic mode. You can switch between available modes at any time in the main application user interface.
 
-    After loading, the application should looks= similar to this:
+    After loading, the application should look similar to this:
 
     ![Screenshot of the computing history agent.](./media/computing-history-browser.png)
 
