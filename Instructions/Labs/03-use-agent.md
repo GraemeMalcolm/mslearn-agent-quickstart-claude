@@ -131,9 +131,9 @@ Now you're ready to test the app with your agent.
 
 1. When the Flask application starts, open your browser and navigate to [http://localhost:5000](http://localhost:5000) (`http://localhost:5000`).
 
-    The application web site should looks like this:
+    The application web site should look like this:
 
-    ![Screenshot of the agent publishing confirmation message.](./media/client-app.png)
+    ![Screenshot of the computing history agent.](./media/client-app.png)
 
 1. Enter a prompt, such as `What was ENIAC?` and view the response.
 1. Follow up with a second prompt, such as `How does it compare with COLOSSUS?`
