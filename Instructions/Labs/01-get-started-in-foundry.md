@@ -106,12 +106,12 @@ To support specific use cases, you should use a *system prompt* to provide the m
 
 ### Add a web_search tool
 
-So far, the model has answered questions based on the data with which it was trained. While this is useful, that leaves out a lot of current information on the web; which might help the model give more relevant answers.
+A model generally answers questions based on the data with which it was trained. While this is useful, that leaves out a lot of current information on the web; which might help the model give more relevant answers. You can use *tools* to give models access to external data sources and enable them to perform custom tasks. The *web_search* tool enables the model to search the Web for up-to-date information.
 
-We can use *tools* to give models access to external data sources, and to perform custom tasks. Let's add a tool that enables the model to search the Web for up-to-date information.
+> **Note**: The *web_search* tool may be enabled for your model by default.
 
 1. In the pane on the left, under the instructions, expand the **Tools** section if it is not already expanded.
-1. In the **Add** drop-down list, select **Web search**. Then read the information about the tool.
+1. In the **Add** drop-down list, if it is not already enabled, select **Web search**. Then confirm the tool is added to the list of tools, and use its **{i)** icon to read the information about the tool.
 1. After adding the *web_search* tool, in the chat pane, enter the prompt `Find a vintage computer store near Seattle` (*or your local city!*) and review the response.
 
     The model should have searched the Web for vintage computer stores near the specific city.
@@ -491,4 +491,3 @@ Check out the following training resources to dive deeper into AI app and agent 
 - [Develop AI agents on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-e479cf28c8a127f98d3d45961214485266d85b486991cebf33fe779fb53a0190){:target="_blank"}
 - [Develop natural language solutions on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-37cace5b5d91825002d4c09e3f3f98d9027e1b2a79b490b663684c4703361ca7){:target="_blank"}
 - [Extract visual insights from data on Azure](https://aiskillsnavigator.microsoft.com/explore/search/learningpath-d0b0e550fda9d8fc957788736aaee66351967ea44dbad310f4f8dae94a21cfa2){:target="_blank"}
-
