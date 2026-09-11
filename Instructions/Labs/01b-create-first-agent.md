@@ -4,7 +4,7 @@ lab:
   description: Use Microsoft Foundry and Visual Studio Code to create an agent.
   level: 200
   duration: 40 minutes
-  islab: true
+  islab: false
 ---
 
 # Develop your first AI agent in Microsoft Foundry
@@ -217,7 +217,7 @@ A partially completed client application for your agent has been provided. You'l
    pip install -r requirements.txt
     ```
 
-1. In the **Explorer** pane, in the **/computer-history-client** folder, select the **.env** file to open it. Then update the configuration values to replace *your_agent_endpoint_url* with the **Responses API endpoint** for your published agent.
+1. In the **Explorer** pane, in the **/computer-history-client** folder, select the **.env** file to open it. Then update the configuration values to replace *your_agent_endpoint_url* with the **Responses API endpoint** for your agent (copied from the agent details page in the Foundry portal).
 
 1. Save the updated **.env** file.
 
@@ -306,7 +306,7 @@ GitHub Copilot provides agentic AI assistance in Visual Studio Code, helping you
 1. At the bottom of the activity bar on the left, select **Accounts** and ensure that you are signed into your GitHub account. If not, sign in to use AI features.
 1. On the toolbar, next to the search box, use the **Toggle Chat** button to show the chat pane on the right.
 
-    ![Screenshot of GitHub Copilot in Visual Studio Code.](./media/vscode-github-copilot.png)
+    ![Screenshot of GitHub Copilot in Visual Studio Code.](./media/github-copilot-chat.png)
 
     The **Chat** pane is where you configure and use GitHub Copilot and connected agents to assist you with development tasks. You can select the model that GitHub Copilot uses, configure tools, and add custom agents. We'll use the default settings in this exercise.
 
@@ -317,27 +317,38 @@ GitHub Copilot provides agentic AI assistance in Visual Studio Code, helping you
 1. With the specification file still open, in the Chat pane, enter the following prompt for GitHub Copilot.
 
     ```
-    Use the feature spec to add an image identification feature to the computer hstory client app.
+    Use the feature spec to add an image identification feature to the computer history client app.
     ```
 
-1. Enter the prompt, and wait while GitHub Copilot reviews and modifies your code. Eventually the changes will be staged and displayed.
+1. Enter the prompt, and wait while GitHub Copilot reviews and modifies your code.
 
-    ![Screenshot of GitHub Copilot in Visual Studio Code.](./media/vscode-modified-code.png)
+    The process may take some time, and you may be prompted several times to allow GitHub Copilot to perform actions.
 
-1. With the changes staged, in the terminal, re-run the code (`python app.py`), and then open your browser and navigate to the URL where it is running.
+    Eventually the changes will be staged, ready for you to test.
+
+1. View the agent-client.py file in Visual Studio code to see the changes made by GitHib Copilot.
+
+    ![Screenshot of GitHub Copilot in Visual Studio Code.](./media/github-copilot-edits.png)
+
+1. With the changes staged, in the terminal, re-run the app (`python app.py`), and then open your browser and navigate to the URL where it is running.
 
 1. In the revised version of the app, upload one of the images from the **/test-images** folder (which is in the folder where you cloned the repo); and enter the prompt `What can you tell me about this?`
 
 1. Review the response, which should provide information about the computer in the image you uploaded.
 
-1. Try the other images in the *test-images* folder with prompts like `What about this?` or `Tell me about this.`
-1. When you've finished testing the app, close the browser, and in Visual Studio, enter **CTRL+C** in the terminal pane, to stop the local web server.
+    ![Screenshot of the compuing history app with a response to an image-based prompt.](./media/computing-history-response2.png)
 
-1. If you're happy with the code that GitHub Copilot has generated, use the **Keep** button in the **Chat** pane to confirm the changes.
+1. Try the other images in the *test-images* folder with prompts like `What about this?` or `Tell me about this.`
+
+1. If you're happy with the code that GitHub Copilot has generated, in Visual Studio Code, use the **Keep** button in the **Chat** pane to confirm the changes.
+
+    If not, continue the conversation with GitHub Copilot, specifying the changes you would like.
+
+1. When you've finished testing the app, close the browser, and in Visual Studio, enter **CTRL+C** in the terminal pane, to stop the local web server.
 
 ## Summary
 
-In this exercise, you built a client application that uses an agent you developed in Microsoft Foundry.
+In this exercise, you developed an AI agent using Microsoft Foundry, and then created a client application that uses an agent you developed in Visual Studio Code.
 
 If you have finished exploring Microsoft Foundry, you should delete the Azure resources created in this lab to avoid unnecessary utilization charges.
 
