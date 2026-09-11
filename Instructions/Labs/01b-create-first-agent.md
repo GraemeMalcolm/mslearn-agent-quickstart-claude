@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Develop your first AI agent in Microsoft Foundry
+  title: Develop your first AI agent in Microsoft Foundry (New version)
   description: Use Microsoft Foundry and Visual Studio Code to create an agent.
   level: 200
   duration: 40 minutes
