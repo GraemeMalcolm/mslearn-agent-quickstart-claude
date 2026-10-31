@@ -18,7 +18,8 @@ a question, so the agent can answer questions about computing-related images.
 ## Functional requirements
 
 - Send the prompt text and optional image to the agent using the existing
-  OpenAI Responses API integration.
+  Claude Messages API integration (as a base64-encoded image content block
+  alongside the text).
 - Extend the existing agent client rather than creating a separate request path for image prompts.
 - Preserve the existing behavior for text-only prompts and conversation reset.
 - Show a useful error without submitting when the image has an unsupported

@@ -1,9 +1,12 @@
-# Develop your first agent with Microsoft Foundry
+# Develop your first agent with Claude
 
-This repo contains exercises and supporting files for skilling content on [Microsoft AI Skills Navigator](https://aiskillsnavigator.microsoft.com/playlists/ceb4e15f-0793-4389-ad02-c7c778d16b2c).
+This repo contains an exercise and supporting files for building a first AI agent with the Claude platform: prototyping in the Claude Console, implementing the agent loop in Python with the Claude SDK, and using Claude Code in Visual Studio Code to add image input.
 
-For the best experience, view the labs in the [*GitHub Pages* site](https://microsoftlearning.github.io/mslearn-agent-quickstart/) for this repo.
+- **Instructions/Labs/** - the lab instructions
+- **computer-history-client/** - the starter code used in the lab
+- **Solution/** - the completed code, including the image input feature
+- **test-images/** - images to use when testing image input
 
-> **Note**: The labs in this repo require an Azure subscription.
+> **Note**: The lab requires a Claude Console account with API credits. Never commit a real API key - the *.env* files in this repo contain placeholders only.
 
-If you encounter any problems when completing the labs in this repo, please submit an [issue](../../issues).
+If you encounter any problems when completing the lab, please submit an [issue](../../issues).

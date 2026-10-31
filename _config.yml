@@ -15,4 +15,4 @@ markdown: kramdown
 kramdown:
    syntax_highlighter_opts:
       disable : true
-title: Develop your first agent with Microsoft Foundry
+title: Develop your first agent with Claude

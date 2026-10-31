@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor and tool settings
+.vscode/
+.claude/
+.idea/
+
+# Jekyll
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NOTE: the .env files in computer-history-client/ and Solution/ are tracked on
+# purpose - they contain only placeholders that learners replace in the lab.
+# Never commit a real API key. Use `git update-index --skip-worktree <file>` if
+# you keep a real key in one locally.
