@@ -118,7 +118,7 @@ A partially completed client application for your agent has been provided. You'l
 1. Install the required Python packages by running the following command:
 
     ```
-    pip install -r requirements.txt
+   pip install -r requirements.txt
     ```
 
 1. In the **Explorer** pane, in the **/computer-history-client** folder, select the **.env** file to open it. Then replace *your_api_key* with the API key you created in the Claude Console.
@@ -139,24 +139,24 @@ Now you're ready to implement the code that will submit prompts to Claude and re
 1. Find the comment **Import the Anthropic client library**, and add the following code to import the SDK:
 
     ```python
-    # Import the Anthropic client library
-    from anthropic import Anthropic
+   # Import the Anthropic client library
+   from anthropic import Anthropic
     ```
 
 1. Find the comment **Define the agent's instructions (system prompt) and tools**, and add the following code to define the system prompt and web search tool - just like the ones you tested in the playground:
 
     ```python
-    # Define the agent's instructions (system prompt) and tools
-    SYSTEM_PROMPT = (
+   # Define the agent's instructions (system prompt) and tools
+   SYSTEM_PROMPT = (
         "You are an expert in the history of computing and AI. "
         "You only answer questions about significant people and events in the development "
         "of computing, and about notable vintage computers. "
         "Do not engage in conversations on any topic that is unrelated to computing history."
-    )
+   )
 
-    TOOLS = [
+   TOOLS = [
         {"type": "web_search_20260209", "name": "web_search", "max_uses": 5}
-    ]
+   ]
     ```
 
     > **Note**: The `type` value identifies a specific version of the web search tool. If you see a different value in the code from the playground, use that instead. The `max_uses` setting limits the number of searches Claude can perform for a single prompt.
@@ -164,8 +164,8 @@ Now you're ready to implement the code that will submit prompts to Claude and re
 1. In the **AgentClient** class, in the ****init**** function, note that code has been provided to load the API key and model name from the environment configuration file. Then find the comment **Create the Anthropic client** and add the following code:
 
     ```python
-    # Create the Anthropic client
-    self.client = Anthropic()
+   # Create the Anthropic client
+   self.client = Anthropic()
     ```
 
     The client automatically reads the **ANTHROPIC_API_KEY** environment variable (which was loaded from your *.env* file).
@@ -173,9 +173,9 @@ Now you're ready to implement the code that will submit prompts to Claude and re
 1. In the **send_message** function, note that code to add the user's prompt to the conversation history has been provided. Then, in the **try** block, find the comment **Run the agent loop** and add the following code:
 
     ```python
-    # Run the agent loop
-    messages = list(self.conversation_history)
-    for _ in range(self.max_turns):
+   # Run the agent loop
+   messages = list(self.conversation_history)
+   for _ in range(self.max_turns):
         response = self.client.messages.create(
             model=self.model,
             max_tokens=16000,
@@ -192,13 +192,13 @@ Now you're ready to implement the code that will submit prompts to Claude and re
         # Otherwise, Claude has finished
         break
 
-    # The response contains multiple content blocks (for example, web searches and results);
-    # the text blocks make up the answer
-    assistant_message = "".join(
+   # The response contains multiple content blocks (for example, web searches and results);
+   # the text blocks make up the answer
+   assistant_message = "".join(
         block.text for block in response.content if block.type == "text"
-    )
+   )
 
-    if response.stop_reason == "refusal":
+   if response.stop_reason == "refusal":
         assistant_message = "I'm unable to help with that request."
     ```
 
@@ -216,7 +216,7 @@ Now you're ready to test the app.
 1. In the terminal, enter the following command to run the application:
 
     ```powershell
-    python app.py
+   python app.py
     ```
 
 1. When the Flask application starts, open your browser and navigate to the URL where it is running - for example, [http://127.0.0.1:5000](http://127.0.0.1:5000) (`http://127.0.0.1:5000`).
@@ -255,7 +255,7 @@ Claude Code is an agentic coding assistant that can read your codebase, plan cha
 1. With the specification file still open, in the Claude Code panel, enter the following prompt:
 
     ```
-    Use the feature spec to add an image identification feature to the computer history client app.
+   Use the feature spec to add an image identification feature to the computer history client app.
     ```
 
     > **Tip**: For larger changes, you can switch Claude Code to *plan mode* first, to review its approach before it makes any edits.
