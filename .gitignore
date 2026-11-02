@@ -20,6 +20,7 @@ Thumbs.db
 
 # Local solution files may contain API keys
 /Solution/
+/LabSolution/
 
 # NOTE: the .env file in computer-history-client/ is tracked on
 # purpose - it contains only placeholders that learners replace in the lab.

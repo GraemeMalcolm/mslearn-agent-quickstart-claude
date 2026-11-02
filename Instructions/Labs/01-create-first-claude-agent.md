@@ -23,7 +23,7 @@ The Claude Console (part of the Claude Platform) is a web portal in which you ca
 
 1. In a web browser, open the [Claude Console](https://platform.claude.com){:target="_blank"} at `https://platform.claude.com`, and sign in (or create an account). If prompted, create an organization and complete any setup steps - including adding credits to your account.
 
-1. In the navigation menu, open the **playground** (also known as the *Prompt Console*).
+1. In the navigation menu, open the **playground** (also known as the *Prompt Console*) and ensure the **Form** tabe is selected.
 
     > **Tip**: If you can't find the playground, look in the navigation menu under **Build**.
 
@@ -57,7 +57,7 @@ To support specific use cases, you should use a *system prompt* to provide the m
 
 A model generally answers questions based on the data with which it was trained. While this is useful, that leaves out a lot of current information on the web, which might help the model give more relevant answers. You can use *tools* to give models access to external data sources and enable them to perform tasks. The *web search* tool enables Claude to search the web for up-to-date information. It's a *server-side* tool, which means that Anthropic runs the searches for you - you don't need to write any code to perform them.
 
-1. In the playground, find the **Tools** section and enable the **Web search** tool.
+1. In the playground, add the **Web search** tool.
 
     > **Note**: Web search must be enabled for your organization. If you're unable to use it, an organization admin can enable it in the Claude Console settings.
 
@@ -65,11 +65,11 @@ A model generally answers questions based on the data with which it was trained.
 
     The model should have searched the web for vintage computer stores near the specific city, and included references to the sources it used.
 
-### Get the code for your agent
+### View the code for your agent
 
 You've now defined the main elements of your agent: a *model*, *instructions*, and a *tool*. Next you'll implement them in code.
 
-1. In the playground, use the **Get code** button to view the Python code that's equivalent to your configuration. Note how it includes the model, the system prompt, and the web search tool definition. You'll write something very similar in the next section.
+1. In the playground, switch to the **Code** tab to view the Python code that's equivalent to your configuration. Note how it includes the model, the system prompt, and the web search tool definition. You'll write something very similar in the next section.
 
     > **Tip**: playground settings aren't an agent that gets deployed anywhere. They're a prototype - you're responsible for the code that runs the agent, using the Messages API.
 
