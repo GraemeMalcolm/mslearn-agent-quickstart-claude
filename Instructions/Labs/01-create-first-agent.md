@@ -1,0 +1,342 @@
+---
+lab:
+  title: Develop your first AI agent in Microsoft Foundry (New version)
+  description: Use Microsoft Foundry and Visual Studio Code to create an agent.
+  level: 200
+  duration: 40 minutes
+  islab: false
+---
+
+# Develop your first AI agent in Microsoft Foundry
+
+This exercise should take approximately **40** minutes to complete.
+
+> **Note**: Many components of Microsoft Foundry, including the Microsoft Foundry portal, are subject to continual development. This reflects the fast-moving nature of artificial intelligence technology. Some elements of your user experience may differ from the images and descriptions in this exercise!
+
+## Create an agent in the Microsoft Foundry portal
+
+Microsoft Foundry uses *projects* to organize models, resources, data, and other assets used to develop an AI solution.
+
+1. In a web browser, open [Microsoft Foundry](https://ai.azure.com){:target="_blank"} at `https://ai.azure.com` and start building; signing in using your Azure credentials. Close any tips or quick start panes that are opened the first time you sign in, and if necessary use the **Foundry** logo at the top left to navigate to the home page.
+
+1. If it is not already enabled, in the toolbar at the top of the page, enable the **New Foundry** option.
+
+    A default Foundry project may have already been created for you. If not, you may be prompted to create one.
+
+1. If prompted, create a new project with a unique name; expanding the  **Advanced options** area to specify the following settings for your project:
+    - **Foundry resource**: *A valid name for your Foundry resource.*
+    - **Subscription**: *Your Azure subscription*
+    - **Resource group**: *Create or select a resource group*
+    - **Region**: Select any of the **AI Foundry recommended** regions in [this list](https://learn.microsoft.com/azure/foundry/openai/how-to/responses#supported-regions){:target="_blank"}
+
+    > **Tip**: Depending on your permissions in the Azure subscription, you may need to clear the option to set up recommended resources.
+
+    Wait for your project to be created. It may take a few minutes. Then close any welcome dialogs that are displayed.
+
+    After creating or selecting a project in the new Foundry portal, it should open in a page similar to the following image:
+
+    ![Screenshot of the Foundry project home page.](./media/foundry-portal-home.png)
+
+### Deploy a model
+
+At the heart of every AI agent, there's a large language model (LLM). Let's find one in the Foundry models catalog.
+
+1. Now you're ready to explore models. On the **Home** page, select **Explore models** to view the Microsoft Foundry model catalog.
+
+    Microsoft Foundry provides a large collection of models from Microsoft, OpenAI, and other providers, that you can use in your AI apps and agents.
+
+    ![Screenshot of the AI Foundry model catalog.](./media/0-foundry-models.png)
+
+1. Search for and select the `gpt-5-mini` model, and view the page for this model, which describes its features and capabilities.
+
+    ![Screenshot of the gpt-5-mini model page.](./media/gpt-5-mini.png)
+
+1. Use the **Deploy** (or **Custom Deploy**) button to deploy the model using the default settings. Deployment may take a minute or so.
+
+    > **Tip**: Model deployments are subject to regional quotas and policies. If you don't have enough quota to deploy the model in your project's region, you can try a custom deployment with the defaul settings, use a different *gpt* chat-capable model - such as *gpt-5-nano* or *gpt-5.4-mini*, or create a new project in a different region.
+
+1. When the model has been deployed, view the model playground page that is opened, in which you can chat with the model.
+
+    ![Screenshot of the model playground.](./media/0-model-playground.png)
+
+### Chat with the model
+
+You can use the playground to explore the model by chatting with it.
+
+1. Use the button at the bottom of the left navigation pane to hide it and give yourself more room to work with.
+1. In the **Chat** pane, enter a prompt such as `Who was Ada Lovelace?`, and review the response.
+
+    ![Screenshot of the chat pane with a response.](./media/0-chat-response.png)
+
+1. Enter a follow-up prompt, such as `Tell me more about her work with Charles Babbage.` and review the response.
+
+    Generative AI chat applications often include the conversation history in the prompt; so the context of the conversation is retained between messages. In this case, "her" is interpreted as referring to Ada Lovelace.
+
+1. At the top-right of the chat pane, use the **New chat** button to restart the conversation. This removes all conversation history.
+1. Enter a new prompt, such as `Tell me about the ELIZA chatbot.` and view the response.
+1. Continue the conversation with prompts such as `How does ELIZA compare with modern LLMs?`.
+
+### Specify instructions in a *system prompt*
+
+To support specific use cases, you should use a *system prompt* to provide the model with instructions that guide its responses. You can use the system prompt to give the model a specific focus or role, and provide guidelines about format, style, and constraints about what the model should and should not include in its responses.
+
+1. In the model playground, at the top-right of the chat pane, use the **New chat** button to restart the conversation and remove the conversation history.
+1. In the pane on the left, in the **Instructions** text area, change the system prompt to:
+
+    ```
+   You are an expert in the history of computing and AI. You only answer questions about significant people and events in the development of computing, and about notable vintage computers. Do not engage in conversations on any topic that is unrelated to computing history.
+    ```
+
+1. Now enter a new user prompt related to computing history, such as `What was Alan Turing's contribution to the development of AI?`
+
+    Review the response, which should provide some history of computing information.
+
+1. Try asking an "off-topic" question, such as `What's the capital of Spain?`; and view the response.
+
+### Add a web_search tool
+
+A model generally answers questions based on the data with which it was trained. While this is useful, that leaves out a lot of current information on the web; which might help the model give more relevant answers. You can use *tools* to give models access to external data sources and enable them to perform custom tasks. The *web_search* tool enables the model to search the Web for up-to-date information.
+
+> **Note**: The *web_search* tool may be enabled for your model by default.
+
+1. In the pane on the left, under the instructions, expand the **Tools** section if it is not already expanded.
+1. In the **Add** drop-down list, if it is not already enabled, select **Web search**. Then confirm the tool is added to the list of tools, and use its **{i)** icon to read the information about the tool.
+1. After adding the *web_search* tool, in the chat pane, enter the prompt `Find a vintage computer store near Seattle` (*or your local city!*) and review the response.
+
+    The model should have searched the Web for vintage computer stores near the specific city.
+
+### Save the model configuration as an agent
+
+While you can implement generative AI apps using a standalone model, to create a fully agentic AI experience, you need to encapsulate the model, its instructions, and any tool configuration that provides additional functionality, in an *agent*.
+
+1. In the model playground, at the top right select **Save as agent**. Then, when prompted, name your new agent `computing-historian`.
+
+    When the agent is created, it opens in a new playground specifically for working with agents.
+
+    ![Screenshot of the agent playground.](./media/agent-playground.png)
+
+1. In the pane on the right, view the **YAML** tab, which contains the definition for your agent. Note that its definition includes the model, its parameter settings, and the instructions you specified - similar to this:
+
+    ```yml
+    metadata:
+      logo: Avatar_Default.svg
+      microsoft.voice-live.enabled: "false"
+    object: agent.version
+    id: computing-historian:1
+    name: computing-historian
+    version: "1"
+    description: ""
+    created_at: 1782917197
+    definition:
+      kind: prompt
+      model: gpt-5-mini
+      instructions: You are an expert in the history of computing and AI. You only answer questions about significant people and events in the development of computing, and about notable vintage computers. Do not engage in conversations on any topic that is unrelated to computing history.
+      tools:
+        - type: web_search
+    status: active
+    instance_identity:
+      principal_id: c51143c7-2c5e-4d70-a7c1-759539926623
+      client_id: c51143c7-2c5e-4d70-a7c1-759539926623
+    blueprint:
+      principal_id: 3a9a2794-b482-42f9-8b52-f7c0f80d2520
+      client_id: e70779c8-c3ce-49c6-8ca6-8ea5037e9738
+    blueprint_reference:
+      type: ManagedAgentIdentityBlueprint
+      blueprint_id: computing-historian-13bf1
+    agent_guid: 13bf1394-7dfe-4c03-94b7-3e81a168d770
+    ```
+
+1. Switch back to the **Chat** tab, and enter the prompt `Who are you?`
+
+    The response should indicate that the agent is "aware" of its role as a computing historian.
+
+### Preview the agent
+
+Now you have a working agent, you can preview it in a basic web chat application.
+
+1. At the top of the chat pane, in the **Publish** drop-down list, select **Preview web app**.
+
+    A preview chat interface is opened in a new browser tab.
+
+1. Enter a prompt, such as `What can you tell me about the Altair 8800?` and view the response from your agent.
+
+    ![Screenshot of an agent preview chat interface.](./media/agent-preview.png)
+
+1. When you've finished testing the agent, close the tab containing the preview app to return to your agent in the Foundry portal
+
+## Develop a client app for the agent
+
+So far you've developed and tested your agent within a Foundry project. To take it into production, you need to write code that consumes it from its dedicated endpoint. That means you can move beyond playground testing and start integrating the agent into a real user experience.
+
+1. In the **computing-historian** agent page in the Foundry portal, view the **Details** tab. In particular, note the **Responses** protocol endpoint that clients apps can use to call your agent via the OpenAI Responses API. You'll need this later!
+
+### Configure a client application in Visual Studio Code
+
+A partially completed client application for your agent has been provided. You'll complete this app and test it with your agent endpoint.
+
+1. Start Visual Studio Code.
+
+    > **Tip**: If you're new to Visual Studio Code, you can refer to the [documentation](https://code.visualstudio.com/Docs){:target="_blank"} at `https://code.visualstudio.com/Docs` for help.
+
+1. Open the command palette (*Ctrl+Shift+P* or on the **View** menu, select **Command Palette**) and enter the `Git:clone` command to clone the `https://github.com/MicrosoftLearning/mslearn-agent-quickstart` repo to a local folder (it doesn't matter which one).
+1. After the clone operation is complete, open the folder when prompted.
+
+    The folder may open in **Restricted mode**. If so, select the mode and trust the authors to allow full functionality..
+
+1. In the Activity bar on the left edge, view the **Extensions** pane; and if it is not already installed, search for and install the **Python** extension.
+1. In the **Command Palette**, use the command `python:select interpreter` to create a new **Venv** environment based on your Python 3.1x installation.
+
+    > **Tip**: You can choose to install the workspace dependencies in the *requirements.txt* file as you create the environment. Don't worry if you accidentally skip this though; we'll do it in a later step anyway.
+
+    Wait for the environment to be created. It may take a while, and some notifications may be displayed during the process.
+
+1. In the Activity bar, switch back to the **Explorer** pane, and navigate to the folder containing the application code files at **/computer-history-client**. The application files include:
+    - **.env** (the application configuration file)
+    - **agent_client.py** (the code file for the Python code to interact with your agent)
+    - **app.py** (the main code file for a Python Flask-based web application)
+    - **requirements.txt** (the Python package dependencies that need to be installed)
+1. In the **Explorer** pane, right-click the **agent_client.py** file, and select **Open in integrated terminal**.
+
+    > **Tip**: Opening the terminal in Visual Studio Code should automatically activate the Python environment after a few seconds. If you're using a PowerShell terminal, you may need to enable running scripts on your system (see [Set-ExecutionPolicy](https://learn.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy){:target="_blank"}). If for any reason the Python environment is not activated automatically, you can use [this query](https://www.bing.com/search?q=%22How%20do%20I%20activate%20a%20Python%20venv%22){:target="_blank"} to search for information on how to activate it in your environment.
+
+1. Ensure that the terminal is open in the **/computer-history-client** folder with the prefix **(.venv)** to indicate that the Python environment you created is active.
+1. Install the required Python packages by running the following command:
+
+    ```
+   pip install -r requirements.txt
+    ```
+
+1. In the **Explorer** pane, in the **/computer-history-client** folder, select the **.env** file to open it. Then update the configuration values to replace *your_agent_endpoint_url* with the **Responses API endpoint** for your agent (copied from the agent details page in the Foundry portal).
+
+1. Save the updated **.env** file.
+
+### Add code to interact with your agent
+
+Now you're ready to implement the code that will submit prompts to your agent.
+
+1. In the **Explorer** pane, in the **/computer-history-client** folder, select the **agent_client.py** file (<u>not</u> *app.py*) to open it.
+1. Review the existing code. You will add code to use the OpenAI Response API to interact with your agent.
+
+    > ![Image of Anton.](./media/anton-icon.png)<br/>**Tip**: As you add code to the code file, be sure to maintain the correct indentation.
+
+1. Find the comment **Import Azure Identity and OpenAI client libraries**, and add the following code to import the Azure Identity classes required to use Entra ID authentication, and the OpenAI library.
+
+    ```python
+   # Import Azure Identity and OpenAI client libraries
+   from azure.identity import DefaultAzureCredential, get_bearer_token_provider
+   from openai import OpenAI
+    ```
+
+1. In the **AgentClient** class, in the ****init**** function, note that code has been provided to load the agent endpoint from the environment configuration file. Then find the comment **Create OpenAI client authenticated with Azure credentials** and add the following code to create an authenticated OpenAI client for your agent:
+
+    ```python
+   # Create OpenAI client authenticated with Azure credentials 
+   self.client = OpenAI(
+        api_key=get_bearer_token_provider(
+            DefaultAzureCredential(), 
+            "https://ai.azure.com/.default"
+        ),
+        base_url=self.agent_endpoint,
+        default_query={"api-version": "v1"}
+   )
+    ```
+
+1. In the **send_message** function, note that code to add the user's prompt to the conversation history has been provided. Then, in the **try** block, find the comment **Send prompt with full conversation history and get response** and add the following code to submit the prompt to the agent and get the response.
+
+    ```python
+   # Send prompt with full conversation history and get response
+   response = self.client.responses.create(
+        input=self.conversation_history
+   )
+   assistant_message = response.output_text
+    ```
+
+1. Read through the rest of the code, using the comments to understand the technique of tracking user inputs and responses in a conversation history.
+1. Save the updated **agent_client.py** file.
+
+### Run the client application
+
+Now you're ready to test the app with your agent.
+
+1. In the terminal, use the following command to sign into Azure.
+
+    ```powershell
+   az login
+    ```
+
+1. When prompted, follow the instructions to sign into Azure. Then complete the sign in process in the command line, viewing (and confirming if necessary) the details of the subscription containing your Foundry resource.
+1. After you have signed in, enter the following command to run the application:
+
+    ```powershell
+   python app.py
+    ```
+
+1. When the Flask application starts, open your browser and navigate to the URL where it is running - for example, [http://127.0.0.1:5000](http://127.0.0.1:5000) (`http://127.0.0.1:5000`).
+
+    The application web site should look like this:
+
+    ![Screenshot of the computing history agent.](./media/client-app.png)
+
+1. Enter a prompt, such as `What was ENIAC?` and view the response.
+1. Follow up with a second prompt, such as `How does it compare with COLOSSUS?`
+1. Try more prompts, like `Find the latest news for vintage computer enthusiasts.`
+
+    Your agent should use its knowledge and tools to provide useful information and insights into computing history related topics.
+
+1. When you've finished testing the app, close the browser, and in Visual Studio, enter **CTRL+C** in the terminal pane, to stop the local web server.
+
+### Use GitHub Copilot to enhance the application
+
+GitHub Copilot provides agentic AI assistance in Visual Studio Code, helping you develop applications more efficiently.
+
+> **Tip**: GitHub Copilot in Visual Studio Code requires that you are signed in using a GitHub account. While agentic assistance is available in all GitHub plans, including free accounts, there are usage limitations.
+
+1. At the bottom of the activity bar on the left, select **Accounts** and ensure that you are signed into your GitHub account. If not, sign in to use GitHub Copilot and authorize Visual Studio Code.
+
+1. If the chat pane is not already visible on the right, on the toolbar, next to the search box, use the **Toggle Chat** button to open it.
+
+    ![Screenshot of GitHub Copilot in Visual Studio Code.](./media/github-copilot-chat.png)
+
+    The **Chat** pane is where you configure and use GitHub Copilot and connected agents to assist you with development tasks. You can select the model that GitHub Copilot uses, configure tools, and add custom agents. We'll use the default settings in this exercise.
+
+1. In the **Explorer** pane, in the **/computer-history-client** folder, select **feature-spec.md** and read its contents.
+
+    This file contains a specification for a new feature that enables users to upload an image and submit it to the agent along with a text-based prompt.
+
+1. With the specification file still open, in the Chat pane, enter the following prompt for GitHub Copilot.
+
+    ```
+    Use the feature spec to add an image identification feature to the computer history client app.
+    ```
+
+1. Enter the prompt, and wait while GitHub Copilot reviews and modifies your code.
+
+    The process may take some time, and you may be prompted several times to allow GitHub Copilot to perform actions.
+
+    Eventually the changes will be staged, ready for you to test.
+
+1. View the agent-client.py file in Visual Studio code to see the changes made by GitHub Copilot.
+
+    ![Screenshot of GitHub Copilot in Visual Studio Code.](./media/github-copilot-edits.png)
+
+1. With the changes staged, in the terminal, re-run the app (`python app.py`), and then open your browser and navigate to the URL where it is running.
+
+1. In the revised version of the app, upload one of the images from the **/test-images** folder (which is in the folder where you cloned the repo); and enter the prompt `What can you tell me about this?`
+
+1. Review the response, which should provide information about the computer in the image you uploaded.
+
+    ![Screenshot of the compuing history app with a response to an image-based prompt.](./media/computing-history-response2.png)
+
+1. Try the other images in the *test-images* folder with prompts like `What about this?` or `Tell me about this.`
+
+1. If you're happy with the code that GitHub Copilot has generated, in Visual Studio Code, use the **Keep** button in the **Chat** pane to confirm the changes.
+
+    If not, continue the conversation with GitHub Copilot, specifying the changes you would like.
+
+1. When you've finished testing the app, close the browser, and in Visual Studio, enter **CTRL+C** in the terminal pane, to stop the local web server.
+
+## Summary
+
+In this exercise, you developed an AI agent using Microsoft Foundry, and then created a client application that uses an agent you developed in Visual Studio Code.
+
+

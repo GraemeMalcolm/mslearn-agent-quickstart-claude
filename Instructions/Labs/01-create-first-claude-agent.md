@@ -31,7 +31,7 @@ The Claude Console (part of the Claude Platform) is a web portal in which you ca
 
 At the heart of every AI agent, there's a large language model (LLM). In the Workbench you can chat with a Claude model to explore how it responds.
 
-1. In the Workbench, select the model **Claude Opus 5.5** (`claude-opus-5-5`) in the model settings.
+1. In the Workbench, select the model **Claude Haiku 5.5** (`claude-haiku-5-5`) in the model settings.
 1. In the **User** message box, enter a prompt such as `Who was Ada Lovelace?`, and run it. Review the response.
 1. Add a follow-up prompt, such as `Tell me more about her work with Charles Babbage.` and review the response.
 
