@@ -23,15 +23,15 @@ The Claude Console (part of the Claude Platform) is a web portal in which you ca
 
 1. In a web browser, open the [Claude Console](https://platform.claude.com){:target="_blank"} at `https://platform.claude.com`, and sign in (or create an account). If prompted, create an organization and complete any setup steps - including adding credits to your account.
 
-1. In the navigation menu, open the **Workbench** (also known as the *Prompt Console*).
+1. In the navigation menu, open the **playground** (also known as the *Prompt Console*).
 
-    > **Tip**: If you can't find the Workbench, look in the navigation menu under **Build**, or navigate directly to `https://platform.claude.com/workbench`.
+    > **Tip**: If you can't find the playground, look in the navigation menu under **Build**.
 
 ### Chat with the model
 
-At the heart of every AI agent, there's a large language model (LLM). In the Workbench you can chat with a Claude model to explore how it responds.
+At the heart of every AI agent, there's a large language model (LLM). In the playground you can chat with a Claude model to explore how it responds.
 
-1. In the Workbench, select the model **Claude Haiku 5.5** (`claude-haiku-5-5`) in the model settings.
+1. In the playground, select the model **Claude Haiku 5.5** (`claude-haiku-5-5`) in the model settings.
 1. In the **User** message box, enter a prompt such as `Who was Ada Lovelace?`, and run it. Review the response.
 1. Add a follow-up prompt, such as `Tell me more about her work with Charles Babbage.` and review the response.
 
@@ -57,7 +57,7 @@ To support specific use cases, you should use a *system prompt* to provide the m
 
 A model generally answers questions based on the data with which it was trained. While this is useful, that leaves out a lot of current information on the web, which might help the model give more relevant answers. You can use *tools* to give models access to external data sources and enable them to perform tasks. The *web search* tool enables Claude to search the web for up-to-date information. It's a *server-side* tool, which means that Anthropic runs the searches for you - you don't need to write any code to perform them.
 
-1. In the Workbench, find the **Tools** section and enable the **Web search** tool.
+1. In the playground, find the **Tools** section and enable the **Web search** tool.
 
     > **Note**: Web search must be enabled for your organization. If you're unable to use it, an organization admin can enable it in the Claude Console settings.
 
@@ -69,9 +69,9 @@ A model generally answers questions based on the data with which it was trained.
 
 You've now defined the main elements of your agent: a *model*, *instructions*, and a *tool*. Next you'll implement them in code.
 
-1. In the Workbench, use the **Get code** button to view the Python code that's equivalent to your configuration. Note how it includes the model, the system prompt, and the web search tool definition. You'll write something very similar in the next section.
+1. In the playground, use the **Get code** button to view the Python code that's equivalent to your configuration. Note how it includes the model, the system prompt, and the web search tool definition. You'll write something very similar in the next section.
 
-    > **Tip**: Workbench settings aren't an agent that gets deployed anywhere. They're a prototype - you're responsible for the code that runs the agent, using the Messages API.
+    > **Tip**: playground settings aren't an agent that gets deployed anywhere. They're a prototype - you're responsible for the code that runs the agent, using the Messages API.
 
 ### Create an API key
 
@@ -143,7 +143,7 @@ Now you're ready to implement the code that will submit prompts to Claude and re
     from anthropic import Anthropic
     ```
 
-1. Find the comment **Define the agent's instructions (system prompt) and tools**, and add the following code to define the system prompt and web search tool - just like the ones you tested in the Workbench:
+1. Find the comment **Define the agent's instructions (system prompt) and tools**, and add the following code to define the system prompt and web search tool - just like the ones you tested in the playground:
 
     ```python
     # Define the agent's instructions (system prompt) and tools
@@ -159,7 +159,7 @@ Now you're ready to implement the code that will submit prompts to Claude and re
     ]
     ```
 
-    > **Note**: The `type` value identifies a specific version of the web search tool. If you see a different value in the code from the Workbench, use that instead. The `max_uses` setting limits the number of searches Claude can perform for a single prompt.
+    > **Note**: The `type` value identifies a specific version of the web search tool. If you see a different value in the code from the playground, use that instead. The `max_uses` setting limits the number of searches Claude can perform for a single prompt.
 
 1. In the **AgentClient** class, in the ****init**** function, note that code has been provided to load the API key and model name from the environment configuration file. Then find the comment **Create the Anthropic client** and add the following code:
 
