@@ -3,7 +3,8 @@
 This repo contains an exercise and supporting files for building a first AI agent with the Claude platform: prototyping in the Claude Console, implementing the agent loop in Python with the Claude SDK, and using Claude Code in Visual Studio Code to add image input.
 
 - **Instructions/Labs/** - the lab instructions
-- **computer-history-client/** - the starter code used in the lab
+- **computer-history-client/** - the starter code used in the first lab
+- **managed-agent-client/** - the starter code used in the managed agent lab
 - **Solution/** - the completed code, including the image input feature
 - **test-images/** - images to use when testing image input
 

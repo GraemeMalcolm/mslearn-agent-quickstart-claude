@@ -22,7 +22,7 @@ Thumbs.db
 /Solution/
 /LabSolution/
 
-# NOTE: the .env file in computer-history-client/ is tracked on
+# NOTE: the .env files in computer-history-client/ and managed-agent-client/ are tracked on
 # purpose - it contains only placeholders that learners replace in the lab.
 # Never commit a real API key. Use `git update-index --skip-worktree <file>` if
 # you keep a real key in one locally.
