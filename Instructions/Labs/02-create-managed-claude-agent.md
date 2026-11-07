@@ -89,7 +89,7 @@ A partially completed client application has been provided. You'll complete this
 
     > **Tip**: If you're new to Visual Studio Code, you can refer to the [documentation](https://code.visualstudio.com/Docs){:target="_blank"} at `https://code.visualstudio.com/Docs` for help.
 
-1. If you haven't already cloned the repo in a previous exercise, open the command palette (*Ctrl+Shift+P* or on the **View** menu, select **Command Palette**) and enter the `Git:clone` command to clone the `https://github.com/MicrosoftLearning/mslearn-agent-quickstart-claude` repo to a local folder (it doesn't matter which one). Then open the folder when prompted.
+1. If you haven't already cloned the repo in a previous exercise, open the command palette (*Ctrl+Shift+P* or on the **View** menu, select **Command Palette**) and enter the `Git:clone` command to clone the `https://github.com/GraemeMalcolm/mslearn-agent-quickstart-claude` repo to a local folder (it doesn't matter which one). Then open the folder when prompted.
 
     The folder may open in **Restricted mode**. If so, select the mode and trust the authors to allow full functionality.
 
